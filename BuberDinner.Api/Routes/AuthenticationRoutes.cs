@@ -21,10 +21,10 @@ public static class AuthenticationRoutes
       );
 
       var response = new AuthenticationResponse(
-        authResult.Id,
-        authResult.FirstName,
-        authResult.LastName,
-        authResult.Email,
+        authResult.User.Id,
+        authResult.User.FirstName,
+        authResult.User.LastName,
+        authResult.User.Email,
         authResult.Token
       );
 
@@ -44,10 +44,10 @@ public static class AuthenticationRoutes
       );
 
       var response = new AuthenticationResponse(
-        loginResult.Id,
-        loginResult.FirstName,
-        loginResult.LastName,
-        loginResult.Email,
+        loginResult.User.Id,
+        loginResult.User.FirstName,
+        loginResult.User.LastName,
+        loginResult.User.Email,
         loginResult.Token
       );
 
