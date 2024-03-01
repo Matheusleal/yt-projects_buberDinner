@@ -8,7 +8,12 @@ public static class AuthenticationRoutes
 {
   public static IEndpointRouteBuilder MapAuthenticationRoutes(this IEndpointRouteBuilder app)
   {
-    app.MapPost("/auth/register", (
+    var authRoutes = app
+    .MapGroup("/auth")
+    .WithName("Authentication")
+    .WithOpenApi();
+
+    authRoutes.MapPost("/register", (
       [FromServices] IAuthenticationService authenticationService,
       RegisterRequest request
       ) =>
@@ -31,9 +36,9 @@ public static class AuthenticationRoutes
       return Results.Ok(response);
     })
       .WithName("Register")
-      .WithOpenApi();
+      .Produces<AuthenticationResponse>(StatusCodes.Status200OK);
 
-    app.MapPost("/auth/login", (
+    authRoutes.MapPost("/login", (
       [FromServices] IAuthenticationService authenticationService,
       LoginRequest request
       ) =>
@@ -54,7 +59,7 @@ public static class AuthenticationRoutes
       return Results.Ok(response);
     })
       .WithName("Login")
-      .WithOpenApi();
+      .Produces<AuthenticationResponse>(StatusCodes.Status200OK);
 
     return app;
   }

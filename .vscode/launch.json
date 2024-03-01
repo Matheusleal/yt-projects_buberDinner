@@ -8,6 +8,9 @@
             "name": "Debug",
             "type": "coreclr",
             "request": "launch",
+            "launchBrowser": {
+                "enabled": false
+            },
             "program": "${workspaceFolder}/bin/Debug/net8.0/BuberDinner.Api.dll",
             "args": [],
             "stopAtEntry": false,
