@@ -14,4 +14,9 @@
     <ProjectReference Include="..\BuberDinner.Domain\BuberDinner.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Commom/Interfaces/Authentication/" />
+    <Folder Include="Services/" />
+  </ItemGroup>
+
 </Project>
