@@ -1,10 +1,8 @@
-using BuberDinner.Api.Errors;
-using BuberDinner.Api.Handlers;
-using BuberDinner.Api.Middleware;
+using BuberDinner.Api.Common.Handlers;
+using BuberDinner.Api.Common.Errors;
 using BuberDinner.Api.Routes;
 using BuberDinner.Application;
 using BuberDinner.Infrastructure;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 {
@@ -29,7 +27,7 @@ var app = builder.Build();
     }
     app.UseHttpsRedirection();
 
-    app.MapAuthenticationRoutes();
+    new AuthenticationRoutes().MapAuthenticationRoutes(app);
 
     app.Run();
 }

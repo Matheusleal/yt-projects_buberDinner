@@ -1,12 +1,13 @@
+using BuberDinner.Api.Common;
 using BuberDinner.Application.Services.Authentication;
 using BuberDinner.Contracts.Authentication;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuberDinner.Api.Routes;
 
-public static class AuthenticationRoutes
+public class AuthenticationRoutes : BaseRoute
 {
-  public static IEndpointRouteBuilder MapAuthenticationRoutes(this IEndpointRouteBuilder app)
+  public IEndpointRouteBuilder MapAuthenticationRoutes(IEndpointRouteBuilder app)
   {
     var authRoutes = app
     .MapGroup("/auth")
@@ -14,6 +15,7 @@ public static class AuthenticationRoutes
     .WithOpenApi();
 
     authRoutes.MapPost("/register", (
+      HttpContext context,
       [FromServices] IAuthenticationService authenticationService,
       RegisterRequest request
       ) =>
@@ -25,20 +27,27 @@ public static class AuthenticationRoutes
         request.Password
       );
 
-      var response = new AuthenticationResponse(
-        authResult.User.Id,
-        authResult.User.FirstName,
-        authResult.User.LastName,
-        authResult.User.Email,
-        authResult.Token
+      return authResult.Match(
+        user => Results.Ok(MapResponse(user)),
+        errors => Problem(context, errors)
       );
 
-      return Results.Ok(response);
+      static AuthenticationResponse MapResponse(AuthenticationResult result)
+      {
+        return new AuthenticationResponse(
+          result.User.Id,
+          result.User.FirstName,
+          result.User.LastName,
+          result.User.Email,
+          result.Token
+        );
+      }
     })
       .WithName("Register")
       .Produces<AuthenticationResponse>(StatusCodes.Status200OK);
 
     authRoutes.MapPost("/login", (
+      HttpContext context,
       [FromServices] IAuthenticationService authenticationService,
       LoginRequest request
       ) =>
@@ -48,15 +57,21 @@ public static class AuthenticationRoutes
         request.Password
       );
 
-      var response = new AuthenticationResponse(
-        loginResult.User.Id,
-        loginResult.User.FirstName,
-        loginResult.User.LastName,
-        loginResult.User.Email,
-        loginResult.Token
+      return loginResult.Match(
+        user => Results.Ok(MapResponse(user)),
+        errors => Results.Problem(statusCode: StatusCodes.Status401Unauthorized, title: errors.First().Description)
       );
 
-      return Results.Ok(response);
+      static AuthenticationResponse MapResponse(AuthenticationResult result)
+      {
+        return new AuthenticationResponse(
+          result.User.Id,
+          result.User.FirstName,
+          result.User.LastName,
+          result.User.Email,
+          result.Token
+        );
+      }
     })
       .WithName("Login")
       .Produces<AuthenticationResponse>(StatusCodes.Status200OK);
