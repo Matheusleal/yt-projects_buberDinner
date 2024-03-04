@@ -1,7 +1,9 @@
+using MediatR;
 using BuberDinner.Api.Common;
-using BuberDinner.Application.Services.Authentication;
 using BuberDinner.Contracts.Authentication;
-using Microsoft.AspNetCore.Mvc;
+using BuberDinner.Application.Authentication.Common;
+using BuberDinner.Application.Authentication.Queries.Login;
+using BuberDinner.Application.Authentication.Commands.Register;
 
 namespace BuberDinner.Api.Routes;
 
@@ -14,18 +16,19 @@ public class AuthenticationRoutes : BaseRoute
     .WithName("Authentication")
     .WithOpenApi();
 
-    authRoutes.MapPost("/register", (
+    authRoutes.MapPost("/register", async (
       HttpContext context,
-      [FromServices] IAuthenticationService authenticationService,
+      ISender mediator,
       RegisterRequest request
       ) =>
     {
-      var authResult = authenticationService.Register(
+      var command = new RegisterCommand(
         request.FirstName,
         request.LastName,
         request.Email,
         request.Password
       );
+      var authResult = await mediator.Send(command);
 
       return authResult.Match(
         user => Results.Ok(MapResponse(user)),
@@ -46,20 +49,21 @@ public class AuthenticationRoutes : BaseRoute
       .WithName("Register")
       .Produces<AuthenticationResponse>(StatusCodes.Status200OK);
 
-    authRoutes.MapPost("/login", (
+    authRoutes.MapPost("/login", async (
       HttpContext context,
-      [FromServices] IAuthenticationService authenticationService,
+      ISender mediator,
       LoginRequest request
       ) =>
     {
-      var loginResult = authenticationService.Login(
+      var query = new LoginQuery(
         request.Email,
         request.Password
       );
+      var loginResult = await mediator.Send(query);
 
       return loginResult.Match(
         user => Results.Ok(MapResponse(user)),
-        errors => Results.Problem(statusCode: StatusCodes.Status401Unauthorized, title: errors.First().Description)
+        errors => Problem(context, errors)
       );
 
       static AuthenticationResponse MapResponse(AuthenticationResult result)

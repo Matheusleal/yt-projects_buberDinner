@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.2.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
   </ItemGroup>
 
@@ -17,6 +19,8 @@
   <ItemGroup>
     <Folder Include="Commom/Interfaces/Authentication/" />
     <Folder Include="Services/" />
+    <Folder Include="Services/Authentication/Commands/" />
+    <Folder Include="Services/Authentication/Queries/" />
   </ItemGroup>
 
 </Project>
