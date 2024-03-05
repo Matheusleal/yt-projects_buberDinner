@@ -1,7 +1,8 @@
 using MediatR;
+using MapsterMapper;
+using Microsoft.AspNetCore.Mvc;
 using BuberDinner.Api.Common;
 using BuberDinner.Contracts.Authentication;
-using BuberDinner.Application.Authentication.Common;
 using BuberDinner.Application.Authentication.Queries.Login;
 using BuberDinner.Application.Authentication.Commands.Register;
 
@@ -16,70 +17,54 @@ public class AuthenticationRoutes : BaseRoute
     .WithName("Authentication")
     .WithOpenApi();
 
-    authRoutes.MapPost("/register", async (
-      HttpContext context,
-      ISender mediator,
-      RegisterRequest request
-      ) =>
-    {
-      var command = new RegisterCommand(
-        request.FirstName,
-        request.LastName,
-        request.Email,
-        request.Password
-      );
-      var authResult = await mediator.Send(command);
-
-      return authResult.Match(
-        user => Results.Ok(MapResponse(user)),
-        errors => Problem(context, errors)
-      );
-
-      static AuthenticationResponse MapResponse(AuthenticationResult result)
-      {
-        return new AuthenticationResponse(
-          result.User.Id,
-          result.User.FirstName,
-          result.User.LastName,
-          result.User.Email,
-          result.Token
-        );
-      }
-    })
+    authRoutes
+      .MapPost("/register", PostRegisterAsync)
       .WithName("Register")
-      .Produces<AuthenticationResponse>(StatusCodes.Status200OK);
+      .Produces<AuthenticationResponse>(StatusCodes.Status200OK)
+      .ProducesProblem(StatusCodes.Status400BadRequest)
+      .ProducesProblem(StatusCodes.Status409Conflict)
+      .ProducesProblem(StatusCodes.Status500InternalServerError);
 
-    authRoutes.MapPost("/login", async (
-      HttpContext context,
-      ISender mediator,
-      LoginRequest request
-      ) =>
-    {
-      var query = new LoginQuery(
-        request.Email,
-        request.Password
-      );
-      var loginResult = await mediator.Send(query);
-
-      return loginResult.Match(
-        user => Results.Ok(MapResponse(user)),
-        errors => Problem(context, errors)
-      );
-
-      static AuthenticationResponse MapResponse(AuthenticationResult result)
-      {
-        return new AuthenticationResponse(
-          result.User.Id,
-          result.User.FirstName,
-          result.User.LastName,
-          result.User.Email,
-          result.Token
-        );
-      }
-    })
+    authRoutes
+      .MapPost("/login", PostLoginAsync)
       .WithName("Login")
-      .Produces<AuthenticationResponse>(StatusCodes.Status200OK);
+      .Produces<AuthenticationResponse>(StatusCodes.Status200OK)
+      .ProducesProblem(StatusCodes.Status400BadRequest)
+      .ProducesProblem(StatusCodes.Status409Conflict)
+      .ProducesProblem(StatusCodes.Status500InternalServerError)
+      .ProducesProblem(StatusCodes.Status401Unauthorized)
+      .ProducesProblem(StatusCodes.Status404NotFound);
 
     return app;
+  }
+
+  private async Task<IResult> PostRegisterAsync(
+      [FromServices] ISender mediator,
+      [FromServices] IMapper mapper,
+      HttpContext context,
+      RegisterRequest request)
+  {
+    var query = mapper.Map<RegisterCommand>(request);
+    var loginResult = await mediator.Send(query);
+
+    return loginResult.Match(
+      user => Results.Ok(mapper.Map<AuthenticationResponse>(user)),
+      errors => Problem(context, errors)
+    );
+  }
+
+  private async Task<IResult> PostLoginAsync(
+      [FromServices] ISender mediator,
+      [FromServices] IMapper mapper,
+      HttpContext context,
+      LoginRequest request)
+  {
+    var query = mapper.Map<LoginQuery>(request);
+    var loginResult = await mediator.Send(query);
+
+    return loginResult.Match(
+      user => Results.Ok(mapper.Map<AuthenticationResponse>(user)),
+      errors => Problem(context, errors)
+    );
   }
 }

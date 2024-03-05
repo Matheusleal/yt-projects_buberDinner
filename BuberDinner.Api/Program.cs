@@ -1,19 +1,15 @@
-using BuberDinner.Api.Common.Handlers;
-using BuberDinner.Api.Common.Errors;
+using BuberDinner.Api;
 using BuberDinner.Api.Routes;
+using BuberDinner.Api.Common.Handlers;
 using BuberDinner.Application;
 using BuberDinner.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 {
-    builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddSwaggerGen();
-
     builder.Services
+        .AddPresentation()
         .AddApplication()
         .AddInfrastructure(builder.Configuration);
-
-    builder.Services.AddProblemDetails(ProblemDetailsCustomization.AddCustomization);
 }
 
 var app = builder.Build();
