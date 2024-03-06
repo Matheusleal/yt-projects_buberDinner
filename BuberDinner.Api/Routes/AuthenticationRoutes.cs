@@ -44,7 +44,7 @@ public class AuthenticationRoutes : BaseRoute
       HttpContext context,
       RegisterRequest request)
   {
-    var query = mapper.Map<RegisterCommand>(request);
+    var query = mapper.Map<TRequest>(request);
     var loginResult = await mediator.Send(query);
 
     return loginResult.Match(
