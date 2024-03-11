@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Services\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.9.0" />
     <PackageReference Include="FluentValidation.AspnetCore" Version="11.3.0" />
     <PackageReference Include="MediatR" Version="12.2.0" />
@@ -20,9 +26,6 @@
 
   <ItemGroup>
     <Folder Include="Commom/Interfaces/Authentication/" />
-    <Folder Include="Services/" />
-    <Folder Include="Services/Authentication/Commands/" />
-    <Folder Include="Services/Authentication/Queries/" />
   </ItemGroup>
 
 </Project>
