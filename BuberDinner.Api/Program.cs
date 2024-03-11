@@ -21,9 +21,12 @@ var app = builder.Build();
         app.UseSwagger();
         app.UseSwaggerUI();
     }
+
+    app.UseAuthentication();
+
     app.UseHttpsRedirection();
 
-    new AuthenticationRoutes().MapAuthenticationRoutes(app);
+    app.MapPresentation();
 
     app.Run();
 }

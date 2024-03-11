@@ -1,5 +1,6 @@
 using BuberDinner.Api.Common.Errors;
 using BuberDinner.Api.Common.Mapping;
+using BuberDinner.Api.Routes;
 
 namespace BuberDinner.Api;
 
@@ -16,5 +17,13 @@ public static class DependencyInjection
     services.AddProblemDetails(ProblemDetailsCustomization.AddCustomization);
 
     return services;
+  }
+
+  public static IEndpointRouteBuilder MapPresentation(this IEndpointRouteBuilder app)
+  {
+    app.MapAuthenticationRoutes();
+    app.MapDinnerRoutes();
+
+    return app;
   }
 }

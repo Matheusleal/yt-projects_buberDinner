@@ -5,6 +5,8 @@ namespace BuberDinner.Api.Common;
 
 public class BaseRoute
 {
+    public virtual IEndpointRouteBuilder MapRoutes(IEndpointRouteBuilder app) => app;
+
     protected IResult Problem(HttpContext context, List<Error> errors)
     {
         if(errors.Count is 0)

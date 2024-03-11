@@ -8,16 +8,25 @@ using BuberDinner.Application.Authentication.Commands.Register;
 
 namespace BuberDinner.Api.Routes;
 
+public static class InjectAuthenticationRoutes
+{
+  public static IEndpointRouteBuilder MapAuthenticationRoutes(this IEndpointRouteBuilder app)
+  {
+    var routes = new AuthenticationRoutes();
+    return routes.MapRoutes(app);
+  }
+}
+
 public class AuthenticationRoutes : BaseRoute
 {
-  public IEndpointRouteBuilder MapAuthenticationRoutes(IEndpointRouteBuilder app)
+  public override IEndpointRouteBuilder MapRoutes(IEndpointRouteBuilder app)
   {
-    var authRoutes = app
+    var routes = app
     .MapGroup("/auth")
     .WithName("Authentication")
     .WithOpenApi();
 
-    authRoutes
+    routes
       .MapPost("/register", PostRegisterAsync)
       .WithName("Register")
       .Produces<AuthenticationResponse>(StatusCodes.Status200OK)
@@ -25,7 +34,7 @@ public class AuthenticationRoutes : BaseRoute
       .ProducesProblem(StatusCodes.Status409Conflict)
       .ProducesProblem(StatusCodes.Status500InternalServerError);
 
-    authRoutes
+    routes
       .MapPost("/login", PostLoginAsync)
       .WithName("Login")
       .Produces<AuthenticationResponse>(StatusCodes.Status200OK)
