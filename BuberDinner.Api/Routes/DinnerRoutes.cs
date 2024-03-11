@@ -3,6 +3,8 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Mvc;
 using BuberDinner.Api.Common;
 using System.Text.Json;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace BuberDinner.Api.Routes;
 
@@ -22,10 +24,11 @@ public class DinnerRoutes : BaseRoute
         var routes = app
             .MapGroup("/dinners")
             .WithName("Dinner")
+            .RequireAuthorization()
             .WithOpenApi();
 
-        routes.MapGet("/", ListDinnersAsync)
-        .Produces<string[]>(StatusCodes.Status200OK)
+        routes.MapGet("/list", ListDinnersAsync)
+        .Produces<ClaimsPrincipal>(StatusCodes.Status200OK)
         .ProducesProblem(StatusCodes.Status400BadRequest)
         .ProducesProblem(StatusCodes.Status409Conflict)
         .ProducesProblem(StatusCodes.Status500InternalServerError)

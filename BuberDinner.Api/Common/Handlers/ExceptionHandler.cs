@@ -10,14 +10,14 @@ public static class ExceptionHandler
         {
             Exception? ex = context.Features.Get<IExceptionHandlerFeature>()?.Error;
 
-            // var (statusCode, message) = ex switch
-            // {
-            //     IError se => ((int)se.StatusCode, se.ErrorMessage),
-            //     _ => (StatusCodes.Status500InternalServerError, "An error occurred while processing your request.")
-            // };
+            //var (statusCode, message) = ex switch
+            //{
+            //    IError se => ((int)se.StatusCode, se.ErrorMessage),
+            //    _ => (StatusCodes.Status500InternalServerError, "An error occurred while processing your request.")
+            //};
 
             await Results
-                .Problem()
+                .Problem(ex.Message, ex.GetType().Name, StatusCodes.Status500InternalServerError)
                 .ExecuteAsync(context);
         });
     }

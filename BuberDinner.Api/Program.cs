@@ -1,6 +1,4 @@
 using BuberDinner.Api;
-using BuberDinner.Api.Routes;
-using BuberDinner.Api.Common.Handlers;
 using BuberDinner.Application;
 using BuberDinner.Infrastructure;
 
@@ -14,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.Build();
 {
-    app.UseExceptionHandler(ExceptionHandler.ResolveProblems);
+    app.UsePresentation();
 
     if (app.Environment.IsDevelopment())
     {
@@ -23,6 +21,7 @@ var app = builder.Build();
     }
 
     app.UseAuthentication();
+    app.UseAuthorization();
 
     app.UseHttpsRedirection();
 
