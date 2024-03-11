@@ -15,7 +15,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuberDinner.Infrastructure"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{76A78B68-88D0-42D4-B7F3-7C7011C0C7D0}"
 	ProjectSection(SolutionItems) = preProject
+		Docs\Aggregates.Bill.md = Docs\Aggregates.Bill.md
+		Docs\Aggregates.Dinner.md = Docs\Aggregates.Dinner.md
+		Docs\Aggregates.Guest.md = Docs\Aggregates.Guest.md
+		Docs\Aggregates.Host.md = Docs\Aggregates.Host.md
 		Docs\Aggregates.Menu.md = Docs\Aggregates.Menu.md
+		Docs\Aggregates.MenuReview.md = Docs\Aggregates.MenuReview.md
+		Docs\Aggregates.User.md = Docs\Aggregates.User.md
 	EndProjectSection
 EndProject
 Global
