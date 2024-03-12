@@ -2,7 +2,7 @@
 
 namespace BuberDinner.Application.Authentication.Commands.Register;
 
-public class RegisterCommandValidator: AbstractValidator<TRequest>
+public class RegisterCommandValidator : AbstractValidator<TRequest>
 {
     public RegisterCommandValidator()
     {

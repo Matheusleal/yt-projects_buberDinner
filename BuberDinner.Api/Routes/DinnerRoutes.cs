@@ -1,33 +1,24 @@
+using System.Security.Claims;
 using MediatR;
 using MapsterMapper;
 using Microsoft.AspNetCore.Mvc;
 using BuberDinner.Api.Common;
-using System.Text.Json;
-using Microsoft.AspNetCore.Authorization;
-using System.Security.Claims;
 
 namespace BuberDinner.Api.Routes;
 
-public static class InjectDinnerRoutes
+public static partial class InjectRoutes
 {
     public static IEndpointRouteBuilder MapDinnerRoutes(this IEndpointRouteBuilder app)
     {
-        var dinnerRoutes = new DinnerRoutes();
-        return dinnerRoutes.MapRoutes(app);
-    }
-}
+        var routes = new DinnerRoutes();
 
-public class DinnerRoutes : BaseRoute
-{
-    public override IEndpointRouteBuilder MapRoutes(IEndpointRouteBuilder app)
-    {
-        var routes = app
+        var router = app
             .MapGroup("/dinners")
             .WithName("Dinner")
             .RequireAuthorization()
             .WithOpenApi();
 
-        routes.MapGet("/list", ListDinnersAsync)
+        router.MapGet("/list", routes.ListDinnersAsync)
         .Produces<ClaimsPrincipal>(StatusCodes.Status200OK)
         .ProducesProblem(StatusCodes.Status400BadRequest)
         .ProducesProblem(StatusCodes.Status409Conflict)
@@ -35,10 +26,13 @@ public class DinnerRoutes : BaseRoute
         .ProducesProblem(StatusCodes.Status401Unauthorized)
         .ProducesProblem(StatusCodes.Status404NotFound);
 
-        return routes;
+        return router;
     }
+}
 
-    private async Task<IResult> ListDinnersAsync(
+public class DinnerRoutes : BaseRoute
+{
+    public async Task<IResult> ListDinnersAsync(
         [FromServices] ISender mediator,
         [FromServices] IMapper mapper,
         HttpContext context)

@@ -17,7 +17,7 @@ public static class ExceptionHandler
             //};
 
             await Results
-                .Problem(ex.Message, ex.GetType().Name, StatusCodes.Status500InternalServerError)
+                .Problem(ex?.Message, ex?.GetType().Name, StatusCodes.Status500InternalServerError)
                 .ExecuteAsync(context);
         });
     }

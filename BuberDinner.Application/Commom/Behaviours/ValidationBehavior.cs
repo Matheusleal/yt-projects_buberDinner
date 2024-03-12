@@ -2,7 +2,7 @@ using MediatR;
 using ErrorOr;
 using FluentValidation;
 
-namespace BuberDinner.Application.Common.Behaviours;
+namespace BuberDinner.Application.Commom.Behaviours;
 
 public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>
@@ -20,17 +20,12 @@ public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TReques
         RequestHandlerDelegate<TResponse> next,
         CancellationToken cancellationToken)
     {
-
-        if(_validator is null)
-        {
+        if (_validator is null)
             return await next();
-        }
 
         var validationResult = _validator.Validate(request);
         if (validationResult.IsValid)
-        {
             return await next();
-        }
 
         var errors = validationResult
             .Errors

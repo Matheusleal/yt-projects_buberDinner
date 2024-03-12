@@ -9,7 +9,7 @@ public class BaseRoute
 
     protected IResult Problem(HttpContext context, List<Error> errors)
     {
-        if(errors.Count is 0)
+        if (errors.Count is 0)
             return Results.Problem();
 
         if (errors.All(x => x.Type == ErrorType.Validation))
@@ -28,6 +28,7 @@ public class BaseRoute
 
         return Results.ValidationProblem(modelErrors);
     }
+
     private static IResult Problem(Error error)
     {
         var statusCode = error.Type switch

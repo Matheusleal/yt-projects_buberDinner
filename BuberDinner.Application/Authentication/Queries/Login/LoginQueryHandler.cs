@@ -4,7 +4,7 @@ using BuberDinner.Domain.Common.Errors;
 using BuberDinner.Application.Authentication.Common;
 using BuberDinner.Application.Commom.Interfaces.Authentication;
 using BuberDinner.Application.Commom.Interfaces.Persistence;
-using BuberDinner.Domain.User;
+using BuberDinner.Domain.UserAggregate;
 
 namespace BuberDinner.Application.Authentication.Queries.Login;
 
@@ -18,6 +18,7 @@ public class LoginQueryHandler : IRequestHandler<LoginQuery, ErrorOr<Authenticat
         _jwtTokenGenerator = jwtTokenGenerator;
         _userRepository = userRepository;
     }
+
     public async Task<ErrorOr<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
     {
         await Task.CompletedTask;
@@ -31,7 +32,6 @@ public class LoginQueryHandler : IRequestHandler<LoginQuery, ErrorOr<Authenticat
 
         return new AuthenticationResult(
           user,
-          token
-        );
+          token);
     }
 }

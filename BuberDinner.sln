@@ -14,14 +14,27 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuberDinner.Infrastructure", "BuberDinner.Infrastructure\BuberDinner.Infrastructure.csproj", "{13B088BA-A41E-4546-A5F6-96384E546FFB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{76A78B68-88D0-42D4-B7F3-7C7011C0C7D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{58D04CEA-6936-4BF5-BB07-E82013F587BA}"
 	ProjectSection(SolutionItems) = preProject
-		Docs\Aggregates.Bill.md = Docs\Aggregates.Bill.md
-		Docs\Aggregates.Dinner.md = Docs\Aggregates.Dinner.md
-		Docs\Aggregates.Guest.md = Docs\Aggregates.Guest.md
-		Docs\Aggregates.Host.md = Docs\Aggregates.Host.md
-		Docs\Aggregates.Menu.md = Docs\Aggregates.Menu.md
-		Docs\Aggregates.MenuReview.md = Docs\Aggregates.MenuReview.md
-		Docs\Aggregates.User.md = Docs\Aggregates.User.md
+		.editorconfig = .editorconfig
+		Directory.Build.Props = Directory.Build.Props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DomainModels", "DomainModels", "{5BF643EC-11F1-4103-B005-07E35DB95414}"
+	ProjectSection(SolutionItems) = preProject
+		Docs\DomainModels\Aggregates.Bill.md = Docs\DomainModels\Aggregates.Bill.md
+		Docs\DomainModels\Aggregates.Dinner.md = Docs\DomainModels\Aggregates.Dinner.md
+		Docs\DomainModels\Aggregates.Guest.md = Docs\DomainModels\Aggregates.Guest.md
+		Docs\DomainModels\Aggregates.Host.md = Docs\DomainModels\Aggregates.Host.md
+		Docs\DomainModels\Aggregates.Menu.md = Docs\DomainModels\Aggregates.Menu.md
+		Docs\DomainModels\Aggregates.MenuReview.md = Docs\DomainModels\Aggregates.MenuReview.md
+		Docs\DomainModels\Aggregates.User.md = Docs\DomainModels\Aggregates.User.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{B95EA3EA-9AE2-4D4E-A95A-9D422F15E617}"
+	ProjectSection(SolutionItems) = preProject
+		Docs\Api\Api.Menu.md = Docs\Api\Api.Menu.md
 	EndProjectSection
 EndProject
 Global
@@ -53,6 +66,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5BF643EC-11F1-4103-B005-07E35DB95414} = {76A78B68-88D0-42D4-B7F3-7C7011C0C7D0}
+		{B95EA3EA-9AE2-4D4E-A95A-9D422F15E617} = {76A78B68-88D0-42D4-B7F3-7C7011C0C7D0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {86E8E2A6-9769-4170-90AB-B237319D29C5}

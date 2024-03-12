@@ -12,6 +12,4 @@ public class Entity<TId> : IEquatable<Entity<TId>>
     public static bool operator !=(Entity<TId> left, Entity<TId> right) => !Equals(left, right);
 
     public bool Equals(Entity<TId>? other) => Equals(other as object);
-
-
 }
