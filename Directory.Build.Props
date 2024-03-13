@@ -4,6 +4,7 @@
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+        <InvariantGlobalization>false</InvariantGlobalization>
 
         <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
         <NoWarn>$(NoWarn),1573,1591,1712</NoWarn>

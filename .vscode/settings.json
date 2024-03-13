@@ -11,5 +11,6 @@
     "**/bin": true,
     "**/obj": true,
     "**/**.csproj": true
-  }
+  },
+  "FSharp.suggestGitignore": false
 }

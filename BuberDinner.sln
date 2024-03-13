@@ -3,22 +3,48 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuberDinner.Api", "BuberDinner.Api\BuberDinner.Api.csproj", "{93D8CC7B-CF3D-47A5-9D29-0B6518F63750}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{98A94306-AEDA-43E1-98B1-6AC26446A459}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuberDinner.Application", "BuberDinner.Application\BuberDinner.Application.csproj", "{CD077474-3F1E-453F-BDB9-F09B6BC536F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuberDinner.Api", "src\BuberDinner.Api\BuberDinner.Api.csproj", "{93D8CC7B-CF3D-47A5-9D29-0B6518F63750}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuberDinner.Contracts", "BuberDinner.Contracts\BuberDinner.Contracts.csproj", "{3379C8BB-61B1-487F-BC31-B1468450C180}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuberDinner.Application", "src\BuberDinner.Application\BuberDinner.Application.csproj", "{CD077474-3F1E-453F-BDB9-F09B6BC536F1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuberDinner.Domain", "BuberDinner.Domain\BuberDinner.Domain.csproj", "{8C49BB16-5268-46E5-B9E9-38DA0D138AF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuberDinner.Contracts", "src\BuberDinner.Contracts\BuberDinner.Contracts.csproj", "{3379C8BB-61B1-487F-BC31-B1468450C180}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuberDinner.Infrastructure", "BuberDinner.Infrastructure\BuberDinner.Infrastructure.csproj", "{13B088BA-A41E-4546-A5F6-96384E546FFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuberDinner.Domain", "src\BuberDinner.Domain\BuberDinner.Domain.csproj", "{8C49BB16-5268-46E5-B9E9-38DA0D138AF1}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuberDinner.Infrastructure", "src\BuberDinner.Infrastructure\BuberDinner.Infrastructure.csproj", "{13B088BA-A41E-4546-A5F6-96384E546FFB}"
+EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9E12DB06-978D-45DD-922C-F9C61D7208BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{46D59972-2DA1-4F79-8F07-D6053A680E37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuberDinner.Api.UnitTests", "tests\UnitTests\BuberDinner.Api.UnitTests\BuberDinner.Api.UnitTests.csproj", "{608D5284-B597-4ABD-A79E-89555C026F7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuberDinner.Application.UnitTests", "tests\UnitTests\BuberDinner.Application.UnitTests\BuberDinner.Application.UnitTests.csproj", "{AB741A1D-A51F-4789-9A31-376117FD65BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuberDinner.Domain.UnitTests", "tests\UnitTests\BuberDinner.Domain.UnitTests\BuberDinner.Domain.UnitTests.csproj", "{26AEF6AA-3255-45E1-95A1-D6A398BDE31D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuberDinner.Infrastructure.UnitTests", "tests\UnitTests\BuberDinner.Infrastructure.UnitTests\BuberDinner.Infrastructure.UnitTests.csproj", "{D67A61A4-C3FC-4E91-8BAF-F61969744F94}"
+EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AcceptanceTests", "AcceptanceTests", "{812115F4-C7F8-42B2-84B2-35EDFD42886E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EndToEndTests", "EndToEndTests", "{FEA7FE5F-8EA1-47BE-963B-B300B85E07FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FunctionalTests", "FunctionalTests", "{C74BECC8-E666-4886-A6C1-BF718E45DB3D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IntegrationTests", "IntegrationTests", "{D0BFDA8E-9BF4-4F76-919E-79C86D2CDEA6}"
+EndProject
+
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{76A78B68-88D0-42D4-B7F3-7C7011C0C7D0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{58D04CEA-6936-4BF5-BB07-E82013F587BA}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		Directory.Build.Props = Directory.Build.Props
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DomainModels", "DomainModels", "{5BF643EC-11F1-4103-B005-07E35DB95414}"
@@ -63,13 +89,43 @@ Global
 		{13B088BA-A41E-4546-A5F6-96384E546FFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13B088BA-A41E-4546-A5F6-96384E546FFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13B088BA-A41E-4546-A5F6-96384E546FFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB741A1D-A51F-4789-9A31-376117FD65BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB741A1D-A51F-4789-9A31-376117FD65BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB741A1D-A51F-4789-9A31-376117FD65BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB741A1D-A51F-4789-9A31-376117FD65BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{608D5284-B597-4ABD-A79E-89555C026F7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{608D5284-B597-4ABD-A79E-89555C026F7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{608D5284-B597-4ABD-A79E-89555C026F7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{608D5284-B597-4ABD-A79E-89555C026F7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26AEF6AA-3255-45E1-95A1-D6A398BDE31D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26AEF6AA-3255-45E1-95A1-D6A398BDE31D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26AEF6AA-3255-45E1-95A1-D6A398BDE31D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26AEF6AA-3255-45E1-95A1-D6A398BDE31D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D67A61A4-C3FC-4E91-8BAF-F61969744F94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D67A61A4-C3FC-4E91-8BAF-F61969744F94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D67A61A4-C3FC-4E91-8BAF-F61969744F94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D67A61A4-C3FC-4E91-8BAF-F61969744F94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{93D8CC7B-CF3D-47A5-9D29-0B6518F63750} = {98A94306-AEDA-43E1-98B1-6AC26446A459}
+		{CD077474-3F1E-453F-BDB9-F09B6BC536F1} = {98A94306-AEDA-43E1-98B1-6AC26446A459}
+		{3379C8BB-61B1-487F-BC31-B1468450C180} = {98A94306-AEDA-43E1-98B1-6AC26446A459}
+		{8C49BB16-5268-46E5-B9E9-38DA0D138AF1} = {98A94306-AEDA-43E1-98B1-6AC26446A459}
+		{13B088BA-A41E-4546-A5F6-96384E546FFB} = {98A94306-AEDA-43E1-98B1-6AC26446A459}
 		{5BF643EC-11F1-4103-B005-07E35DB95414} = {76A78B68-88D0-42D4-B7F3-7C7011C0C7D0}
 		{B95EA3EA-9AE2-4D4E-A95A-9D422F15E617} = {76A78B68-88D0-42D4-B7F3-7C7011C0C7D0}
+		{46D59972-2DA1-4F79-8F07-D6053A680E37} = {9E12DB06-978D-45DD-922C-F9C61D7208BD}
+		{812115F4-C7F8-42B2-84B2-35EDFD42886E} = {9E12DB06-978D-45DD-922C-F9C61D7208BD}
+		{FEA7FE5F-8EA1-47BE-963B-B300B85E07FD} = {9E12DB06-978D-45DD-922C-F9C61D7208BD}
+		{C74BECC8-E666-4886-A6C1-BF718E45DB3D} = {9E12DB06-978D-45DD-922C-F9C61D7208BD}
+		{D0BFDA8E-9BF4-4F76-919E-79C86D2CDEA6} = {9E12DB06-978D-45DD-922C-F9C61D7208BD}
+		{AB741A1D-A51F-4789-9A31-376117FD65BB} = {46D59972-2DA1-4F79-8F07-D6053A680E37}
+		{608D5284-B597-4ABD-A79E-89555C026F7C} = {46D59972-2DA1-4F79-8F07-D6053A680E37}
+		{26AEF6AA-3255-45E1-95A1-D6A398BDE31D} = {46D59972-2DA1-4F79-8F07-D6053A680E37}
+		{D67A61A4-C3FC-4E91-8BAF-F61969744F94} = {46D59972-2DA1-4F79-8F07-D6053A680E37}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {86E8E2A6-9769-4170-90AB-B237319D29C5}

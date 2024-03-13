@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BuberDinner.Infrastructure</name>
+    </assembly>
+    <members>
+        <member name="T:BuberDinner.Infrastructure.Migrations.InitialCrate">
+            <inheritdoc />
+        </member>
+        <member name="M:BuberDinner.Infrastructure.Migrations.InitialCrate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:BuberDinner.Infrastructure.Migrations.InitialCrate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:BuberDinner.Infrastructure.Migrations.InitialCrate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
