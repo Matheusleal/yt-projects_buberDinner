@@ -8,7 +8,8 @@
                 "dotnettools.vscodeintellicode-csharp",
                 "ms-vscode.vs-keybindings",
                 "redhat.vscode-yaml",
-                "drcika.apc-extension"
+                "drcika.apc-extension",
+                "miguelsolorio.symbols"
             ],
             "settings": {
                 "window.commandCenter": false,
